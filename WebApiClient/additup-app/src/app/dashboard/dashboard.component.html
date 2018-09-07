@@ -1,0 +1,28 @@
+<mat-card class="dashboard-mat-card">
+  <mat-card-title>
+    <p>Select the application to play</p>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="text-body-no-sections">
+      <div class="container" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px" fxFlex="1 1 50%">
+        <div *ngFor="let game of games">
+            <mat-card [ngClass]="{'game-card':true, 'game-card-enabled': this.game.IsEnabled, 'game-card-disabled': !this.game.IsEnabled}" color="accent">
+              <mat-card-header>
+                 <mat-card-title>{{game.Title}}</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <mat-icon class="game-icon">{{game.Icon}}</mat-icon>
+                <button *ngIf="game.IsEnabled" (click)="this.runGame(game)" mat-raised-button color="primary">Run</button>
+              </mat-card-content>
+            </mat-card>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+
+
+
+

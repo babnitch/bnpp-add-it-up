@@ -1,0 +1,34 @@
+::ng-deep .mat-toolbar{
+  z-index: 999;
+  position: fixed
+}
+::ng-deep .mat-tab-group{
+  margin-top:55px !important;
+}
+
+::ng-deep .mat-tab-header{
+  z-index: 999;
+  width:100vw;
+  position: fixed  !important;
+  height: 40px;
+}
+::ng-deep .mat-tab-body-wrapper{
+  position: relative !important;
+  margin-top:55px;
+}
+
+
+.mat-tab-group
+{
+  font-size: small;
+}
+
+div.mat-tab-label
+{
+  height: 32px;
+}
+
+mat-sidenav
+{
+  width: 25%;
+}

@@ -1,0 +1,19 @@
+.equationWithoutAnswer {
+  font-weight: bold;
+}
+
+.green-icon {
+  color: green;
+}
+
+.red-icon {
+  color: red;
+}
+
+.rankView {
+  margin-left: 32px
+}
+
+.inputAnswerControl {
+  margin: 0px;
+}

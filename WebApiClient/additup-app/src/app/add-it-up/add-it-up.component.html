@@ -1,0 +1,33 @@
+<mat-card class="dashboard-mat-card">
+  <mat-card-title>
+    <div
+      *ngIf="!this.playingGame; else payingGameTemplate"
+      class="container" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px">
+      <div>Press the</div>
+      <div><button mat-raised-button color="primary" (click)="this.startNewGame()">Start Game</button></div>
+      <div>button to play.</div>
+    </div>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="text-body-no-sections">
+      <div *ngFor="let questionAnswer of this.questionsWithAnswers">
+          <app-question [questionAnswer]="questionAnswer"
+            (moveToNextQuestion)="this.moveToNextQuestion($event)"
+            (timeOut)="this.timeOut($event)">
+          </app-question>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <div
+    *ngIf="this.restartGame"
+    class="container" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px">
+    <div>Press the</div>
+    <div><button mat-raised-button color="primary" (click)="this.restartNewGame()">Restart Game</button></div>
+    <div>button to play again.</div>
+  </div>
+</mat-card>
+
+<ng-template #payingGameTemplate>
+  <p style="font-size: small">Playing the game.</p>
+</ng-template>

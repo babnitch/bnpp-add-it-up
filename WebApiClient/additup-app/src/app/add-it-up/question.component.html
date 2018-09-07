@@ -1,0 +1,61 @@
+<mat-card color="accent">
+  <mat-card-content style="min-height: 96px">
+    <div fxLayout="row" fxLayoutAlign="flex-start flex-start" fxLayoutGap="8px">
+      <!-- Question -->
+      <div fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px">
+          <div fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px">
+            <div>Question:</div>
+            <div class="equationWithoutAnswer">{{this.currentQuestion}}</div>
+
+            <div *ngIf="this.isEnabled; else displayTheAnwser">
+              <form [formGroup]="answerFormGroup" (ngSubmit)="this.onSubmit(answerFormGroup.value)">
+                <mat-form-field>
+                  <input class="inputAnswerControl" matInput placeholder="Answer" formControlName="answer">
+                </mat-form-field>
+              </form>
+            </div>
+
+            <div *ngIf="this.isEnabled">
+              <button class="submitButton" mat-raised-button color="warn" (click)="this.onSubmit(answerFormGroup.value)" [disabled]="answerFormGroup.pristine">Submit</button>
+            </div>
+          </div>
+
+          <div *ngIf="this.isAnsweredCorrectly">
+            <button mat-icon-button>
+              <mat-icon class="green-icon">sentiment_very_satisfied</mat-icon>
+            </button>
+          </div>
+
+          <div *ngIf="this.isAnsweredWrong">
+            <button mat-icon-button color="warn">
+              <mat-icon class="red-icon">sentiment_very_dissatisfied</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <!-- Progress-bar -->
+        <div fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px">
+          <mat-progress-bar style="width:50%" mode="determinate" [value]="this.currentTimerValue">
+          </mat-progress-bar>
+          <p style="font-size: x-small" *ngIf="this.isEnabled">[{{this.currentTimerValue}} - {{this.initialTimerValue}}]</p>
+        </div>
+
+        <div *ngIf="this.isTimedOut">
+          <p>You have not submitted an answer in the allocated time limit. The game is over</p>
+        </div>
+      </div>
+
+      <!-- rankView -->
+      <div class="rankView">
+        Rank:[{{this.questionAnswer?.associatedExercise?.questionToAsk?.rank}}]
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #displayTheAnwser>
+  <div *ngIf="!this.isEnabled">
+    <p>{{this.answer}}</p>
+  </div>
+</ng-template>

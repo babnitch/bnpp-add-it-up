@@ -1,0 +1,10 @@
+<mat-toolbar color="primary" class="main-toolbar">
+  <div class="container" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px">
+    <button mat-button (click)="this.showSideNav()">
+      <mat-icon>{{mainIcon}}</mat-icon>
+    </button>
+  <div class="navbar-text">
+    <ng-content select=".mainToolBarTitle"></ng-content>
+  </div>
+</div>
+</mat-toolbar>

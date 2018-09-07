@@ -1,0 +1,14 @@
+<div [class.app-dark-theme]="true">
+  <mat-sidenav-container fullscreen class="sidenav-container">
+
+    <mat-sidenav #sidenavControl mode="over" class="app-sidenav" mode="push">
+      <app-side-nav [sidenav]='sidenavControl'></app-side-nav>
+    </mat-sidenav>
+
+    <app-main-toolbar [sidenav]="sidenavControl">
+      <span class="mainToolBarTitle">BNPP Demo - Girish Thanki</span>
+    </app-main-toolbar>
+
+    <app-main-content></app-main-content>
+  </mat-sidenav-container>
+</div>
